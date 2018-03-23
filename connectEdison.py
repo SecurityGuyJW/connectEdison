@@ -1,60 +1,3 @@
-'''
-/*
- * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License").
- * You may not use this file except in compliance with the License.
- * A copy of the License is located at
- *
- *  http://aws.amazon.com/apache2.0
- *
- * or in the "license" file accompanying this file. This file is distributed
- * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
- */
-'''
-'''
-PURPOSE - Creates an Intel Edison client to send a custom text message and
-		  email.
-
-DETAILS - This code creates a virtual Intel Edison Client that publishes a MQTT
-		  message to the custom Edison endpoint, which is specified in the
-		  AWS IoT platform.
-		  Before this code will work properly, create the Edison in the AWS IoT
-		  platform, create the associated Policies and attach them to the
-		  Edison Certificate. Then use FileZilla to flash the Edison with the
-		  rootCA, Certificate, Private Key, and Public Key.
-
-		  Using the SNS platform, create an SNS topic and subscribe an email
-		  to the topic. Then confirm the subscription for the email. After this,
-		  subscribe your cell phone number to the SNS topic you created, in
-		  the format +17601236789.
-
-		  After the SNS console, go to the IoT platform and create an SNS rule.
-		  When you create a rule, the query will be in the following format:
-		  SELECT * FROM <"your_device_name">. You will also need to create an
-		  IoT ROLE, which will give the Edison device permission to use the IoT
-		  console. Then, you will also need to create 2 policies and attach them
-		  to this IoT ROLE.
-
-		  The first policy will ensure that the Edison can publish an MQTT
-		  message to your device topic. The policy will be something like:
-		  Effect: {"Allow" : "iot:publish"} ARN: <your_device_ARN>
-
-		  The second policy will ensure that your IoT RULE can republish the
-		  message to the SNS topic so you can receive an SNS message. This
-		  policy will be something like:
-		  Effect: {"Allow" : "sns:publish"} ARN: <your_SNS_ARN>
-
-		  Now attach these policies to you ROLE. After this, look under your
-		  roles "Trust Relationship" and ensure that it has "IoT Assume Role"
-		  permissions.
-
-		  The Edison should be fully set up now.
-
-'''
-
 # For edisonClient
 from AWSIoTPythonSDK.MQTTLib import AWSIoTMQTTClient as AWSIoT
 
@@ -209,7 +152,7 @@ def publish(edisonTopic):
 	 # Publish in a loop 5 times
      while loopCount < 5:
 		 # Store separate messages for efficiency
-		 iphoneMessage = '{"default": "This is default message","APNS": "{\"aps\":{\"alert\": \"iPhone says...Check out these awesome deals!\",\"url\":\"www.amazon.com\"} }"}'
+         iphoneMessage = '{"default": "This is default message","APNS": "{\"aps\":{\"alert\": \"iPhone says...Check out these awesome deals!\",\"url\":\"www.amazon.com\"} }"}'
          emailMessage = '{"default": "This is default message","email": "I am sending an email"}'
          emailJSONMessage = '{"default": "Hello","email-json":"I am sending JSON email message"}'
          httpMessage = '{"default": "Hello World", "http":"This is the http message"}'
