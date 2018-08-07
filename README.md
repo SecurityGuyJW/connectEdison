@@ -11,15 +11,11 @@ Project shoueld be able to
 
 ### areas of intrest
 
-  This is part of the code covers publishing to a topic on AWS, shows main work being done.
+  Piece of show shows main publishing work being done. This main job of this script is to publish information to AWS.
 
-	edisonClient.publish(edisonTopic, iphoneMessage + str(loopCount), 1)
-  edisonClient.publish(edisonTopic, emailMessage + (str(loopCount) * 2), 1)
-  edisonClient.publish(edisonTopic, emailJSONMessage + (str(loopCount) * 3), 1)
-  edisonClient.publish(edisonTopic, httpMessage, 1)
   edisonClient.publish(edisonTopic, httpsMessage, 1)
 
-### coding style
+### Coding Style
 
 Scripting style is used to complete work. Goals of the project do not require an OOP solution.
 
