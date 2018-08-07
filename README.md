@@ -2,7 +2,7 @@
 
 Establish a socket connection from the intel edison to AWS, and to publish information to the AWS cloud.
 
-### areas of intrest
+### Areas of Intrest
 
   Piece of show shows main publishing work being done. 
 
