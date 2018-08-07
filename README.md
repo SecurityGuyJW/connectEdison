@@ -1,17 +1,10 @@
 # Project Title
 
-Establish a socket connection from the intel edison to AWS.
-
-Project shoueld be able to
-
-1.ping the server
-2.pubish data to AWS topics
-3.subscribe to AWS topics
-
+Establish a socket connection from the intel edison to AWS, and to publish information to the AWS cloud.
 
 ### areas of intrest
 
-  Piece of show shows main publishing work being done. This main job of this script is to publish information to AWS.
+  Piece of show shows main publishing work being done. 
 
   edisonClient.publish(edisonTopic, httpsMessage, 1)
 
